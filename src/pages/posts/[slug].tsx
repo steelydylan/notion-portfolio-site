@@ -34,19 +34,19 @@ const renderBlock = (block) => {
   switch (type) {
     case 'paragraph':
       return (
-        <p>
+        <p className="text-gray-500 sm:text-lg mb-6 md:mb-8">
           <Text text={value.text} />
         </p>
       )
     case 'heading_1':
       return (
-        <h1>
+        <h1 className="text-gray-800 text-xl sm:text-2xl font-semibold mb-2 md:mb-4">
           <Text text={value.text} />
         </h1>
       )
     case 'heading_2':
       return (
-        <h2>
+        <h2 className="text-gray-800 text-xl sm:text-2xl font-semibold mb-2 md:mb-4">
           <Text text={value.text} />
         </h2>
       )
@@ -88,9 +88,9 @@ const renderBlock = (block) => {
     case 'image':
       const src =
         value.type === 'external' ? value.external.url : value.file.url
-      const caption = value.caption ? value.caption[0].plain_text : ''
+      const caption = value.caption ? value.caption[0]?.plain_text : ''
       return (
-        <figure>
+        <figure className="bg-gray-100 overflow-hidden rounded-lg shadow-lg relative mb-6 md:mb-8">
           <img src={src} alt={caption} />
           {caption && <figcaption>{caption}</figcaption>}
         </figure>
@@ -108,9 +108,9 @@ export default function Post({ page, blocks }) {
   }
 
   return (
-    <div>
-      <article>
-        <h1>
+    <div className="bg-white py-6 sm:py-8 lg:py-12">
+      <article className="max-w-screen-md px-4 md:px-8 mx-auto">
+        <h1 className="text-gray-800 text-2xl sm:text-3xl font-bold text-center mb-4 md:mb-6">
           <Text text={page.properties.Page.title} />
         </h1>
         <section>
