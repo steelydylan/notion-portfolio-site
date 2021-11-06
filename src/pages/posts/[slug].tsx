@@ -1,3 +1,4 @@
+import { GetBlockResponse } from '@notionhq/client/build/src/api-endpoints'
 import { Fragment } from 'react'
 import { getBlocks, getDatabase, getPage } from '../../lib/notion'
 
@@ -27,11 +28,9 @@ export const Text = ({ text }) => {
   })
 }
 
-const renderBlock = (block) => {
+const renderBlock = (block: GetBlockResponse) => {
   const { type, id } = block
   const value = block[type]
-
-  console.log(block)
 
   switch (type) {
     case 'paragraph':
@@ -145,11 +144,6 @@ export const getStaticProps = async (context) => {
   const post = posts.find((p) => p.slug === slug)
   const page = await getPage(post.id)
   const blocks = await getBlocks(post.id)
-
-  console.log(page, blocks)
-
-  // Retrieve block children for nested blocks (one level deep), for example toggle blocks
-  // https://developers.notion.com/docs/working-with-page-content#reading-nested-blocks
   const childBlocks = await Promise.all(
     blocks
       .filter((block) => block.has_children)
@@ -161,7 +155,6 @@ export const getStaticProps = async (context) => {
       })
   )
   const blocksWithChildren = blocks.map((block) => {
-    // Add child blocks if the block should contain children but none exists
     if (block.has_children && !block[block.type].children) {
       block[block.type]['children'] = childBlocks.find(
         (x) => x.id === block.id
