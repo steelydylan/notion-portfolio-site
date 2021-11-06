@@ -3,13 +3,15 @@ import 'tailwindcss/tailwind.css'
 
 import { Footer } from '../components/footer'
 import { Header } from '../components/header'
+import { useRouter } from 'next/dist/client/router'
 
 export default function MyApp({ Component, pageProps }) {
+  const router = useRouter()
   return (
     <>
-      <Header />
+      {router.pathname !== '/embed' && <Header />}
       <Component {...pageProps} />
-      <Footer />
+      {router.pathname !== '/embed' && <Footer />}
     </>
   )
 }

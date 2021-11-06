@@ -40,6 +40,8 @@ const renderBlock = (block: GetBlockResponse) => {
   const { type, id } = block
   const value = block[type]
 
+  console.log(block)
+
   switch (type) {
     case 'paragraph':
       return (
@@ -109,6 +111,13 @@ const renderBlock = (block: GetBlockResponse) => {
           <img src={src} alt={caption} />
           {caption && <figcaption>{caption}</figcaption>}
         </figure>
+      )
+    case 'bookmark':
+      return (
+        <iframe
+          src={`/embed/?url=${block.bookmark.url}`}
+          className="w-full block border-0 h-36"
+        />
       )
     default:
       return `❌ Unsupported block (${
