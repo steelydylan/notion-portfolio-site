@@ -15,7 +15,7 @@ export const Text = ({ text }) => {
       <span
         className={[
           bold ? 'font-bold' : '',
-          code ? 'bg-red-300 text-red-500' : '',
+          code ? 'bg-red-300 text-red-500 text-sm inline-block py px-2' : '',
           italic ? 'italic' : '',
           strikethrough ? 'stroke-1' : '',
           underline ? 'underline' : '',
