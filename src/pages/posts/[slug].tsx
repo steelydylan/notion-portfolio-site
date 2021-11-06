@@ -41,7 +41,7 @@ const renderBlock = (block: GetBlockResponse) => {
       )
     case 'code':
       return (
-        <pre className="text-gray-500 sm:text-lg mb-6 md:mb-8">
+        <pre className="sm:text-lg mb-6 md:mb-8 text-xs text-white bg-black p-2">
           <Text text={value.text} />
         </pre>
       )
