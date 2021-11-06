@@ -2,7 +2,7 @@ import { NextPageContext } from 'next'
 import parser, { OgpParserResult } from 'ogp-parser'
 
 const Embed = ({ embed, url }: { embed: OgpParserResult; url: string }) => {
-  const ogUrl = embed.ogp['og:url'][0]
+  const ogUrl = embed.ogp['og:url']?.[0] ?? ''
   const domain = new URL(ogUrl).hostname
 
   return (
@@ -30,7 +30,7 @@ const Embed = ({ embed, url }: { embed: OgpParserResult; url: string }) => {
       </div>
       <div className="w-30 h-30" style={{ width: '120px', height: '120px' }}>
         <img
-          src={embed.ogp['og:image'][0]}
+          src={embed.ogp['og:image']?.[0] ?? ''}
           className="w-full h-full object-cover"
         />
       </div>
