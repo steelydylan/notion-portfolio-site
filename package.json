@@ -1,27 +1,37 @@
 {
-  "name": "jsers-site",
+  "name": "notion-blog",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev -p 3009",
     "start": "next start",
-    "lint": "next lint"
+    "build": "next build && node .next/server/build-rss.js",
+    "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss,sass}\" --ignore-path .gitignore",
+    "lint-staged": "lint-staged"
   },
+  "pre-commit": "lint-staged",
   "dependencies": {
-    "next": "12.0.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "@notionhq/client": "^0.4.6",
+    "@zeit/react-jsx-parser": "2.0.0",
+    "async-sema": "3.1.0",
+    "autoprefixer": "^10.4.0",
+    "dayjs": "^1.10.7",
+    "github-slugger": "1.2.1",
+    "katex": "0.12.0",
+    "next": "^11.1.2",
+    "postcss": "^8.3.11",
+    "prismjs": "1.17.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tailwindcss": "^2.2.19",
+    "uuid": "8.1.0"
   },
   "devDependencies": {
-    "@types/react": "17.0.34",
-    "eslint": "7.32.0",
-    "eslint-config-next": "12.0.2",
-    "typescript": "4.4.4",
-    "@swc/cli": "^0.1.51",
-    "@swc/core": "^1.2.106",
-    "autoprefixer": "^10.2.6",
-    "postcss": "^8.3.5",
-    "tailwindcss": "^2.2.4"
+    "@types/katex": "0.11.0",
+    "@types/node": "14.14.31",
+    "@types/react": "17.0.2",
+    "lint-staged": "10.5.4",
+    "pre-commit": "1.2.2",
+    "prettier": "2.2.1",
+    "typescript": "^4.4.4"
   }
 }
