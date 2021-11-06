@@ -1,5 +1,6 @@
 import dayjs from 'dayjs'
 import { Post } from '../types'
+import Link from 'next/link'
 
 const PortfolioItem: React.FC<{
   url: string
@@ -10,45 +11,39 @@ const PortfolioItem: React.FC<{
 }> = ({ url, title, description, date, image }) => {
   return (
     <div className="flex flex-col md:flex-row items-center gap-4 lg:gap-6">
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group w-full md:w-24 lg:w-40 h-56 md:h-24 lg:h-40 block self-start flex-shrink-0 bg-gray-100 overflow-hidden rounded-lg shadow-lg relative"
-      >
-        <img
-          src={image}
-          loading="lazy"
-          alt=""
-          className="w-full h-full object-cover object-center absolute inset-0 transform group-hover:scale-110 transition duration-200"
-        />
-      </a>
+      <Link href={url} passHref>
+        <a className="group w-full md:w-24 lg:w-40 h-56 md:h-24 lg:h-40 block self-start flex-shrink-0 bg-gray-100 overflow-hidden rounded-lg shadow-lg relative">
+          <img
+            src={image}
+            loading="lazy"
+            alt=""
+            className="w-full h-full object-cover object-center absolute inset-0 transform group-hover:scale-110 transition duration-200"
+          />
+        </a>
+      </Link>
 
       <div className="flex flex-col gap-2">
         <span className="text-gray-400 text-sm">{date}</span>
 
         <h2 className="text-gray-800 text-xl font-bold">
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-indigo-500 active:text-indigo-600 transition duration-100"
-          >
-            {title}
-          </a>
+          <Link href={url} passHref>
+            <a
+              href={url}
+              className="hover:text-indigo-500 active:text-indigo-600 transition duration-100"
+            >
+              {title}
+            </a>
+          </Link>
         </h2>
 
         <p className="text-gray-500">{description}</p>
 
         <div>
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-indigo-500 hover:text-indigo-600 active:text-indigo-700 font-semibold transition duration-100"
-          >
-            Read more
-          </a>
+          <Link href={url} passHref>
+            <a className="text-indigo-500 hover:text-indigo-600 active:text-indigo-700 font-semibold transition duration-100">
+              Read more
+            </a>
+          </Link>
         </div>
       </div>
     </div>
