@@ -31,12 +31,20 @@ const renderBlock = (block) => {
   const { type, id } = block
   const value = block[type]
 
+  console.log(block)
+
   switch (type) {
     case 'paragraph':
       return (
         <p className="text-gray-500 sm:text-lg mb-6 md:mb-8">
           <Text text={value.text} />
         </p>
+      )
+    case 'code':
+      return (
+        <pre className="text-gray-500 sm:text-lg mb-6 md:mb-8">
+          <Text text={value.text} />
+        </pre>
       )
     case 'heading_1':
       return (
