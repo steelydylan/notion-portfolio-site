@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next dev -p 3009",
     "start": "next start",
-    "build": "next build && node .next/server/build-rss.js",
+    "build": "next build",
     "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss,sass}\" --ignore-path .gitignore",
     "lint-staged": "lint-staged"
   },
