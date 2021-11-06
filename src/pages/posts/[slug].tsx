@@ -16,7 +16,7 @@ export const Text = ({ text }) => {
         className={[
           bold ? 'font-bold' : '',
           code
-            ? 'bg-red-300 text-red-500 text-sm inline-block py px-2 rounded-sm'
+            ? 'bg-red-300 text-red-500 text-sm inline-block py px rounded-sm'
             : '',
           italic ? 'italic' : '',
           strikethrough ? 'stroke-1' : '',
@@ -44,31 +44,31 @@ const renderBlock = (block: GetBlockResponse) => {
     case 'paragraph':
       return (
         <p className="text-gray-500 sm:text-lg mb-6 md:mb-8">
-          <Text text={value.text} />
+          <Text text={block.paragraph.text} />
         </p>
       )
     case 'code':
       return (
-        <pre className="sm:text-lg mb-6 md:mb-8 text-xs text-white bg-black p-2">
-          <Text text={value.text} />
+        <pre className="mb-6 md:mb-8 text-xs text-white bg-black p-2">
+          <Text text={block.code.text} />
         </pre>
       )
     case 'heading_1':
       return (
         <h1 className="text-gray-800 text-xl sm:text-2xl font-semibold mb-2 md:mb-4">
-          <Text text={value.text} />
+          <Text text={block.heading_1.text} />
         </h1>
       )
     case 'heading_2':
       return (
         <h2 className="text-gray-800 text-xl sm:text-2xl font-semibold mb-2 md:mb-4">
-          <Text text={value.text} />
+          <Text text={block.heading_2.text} />
         </h2>
       )
     case 'heading_3':
       return (
         <h3>
-          <Text text={value.text} />
+          <Text text={block.heading_3.text} />
         </h3>
       )
     case 'bulleted_list_item':
@@ -83,7 +83,7 @@ const renderBlock = (block: GetBlockResponse) => {
         <div>
           <label htmlFor={id}>
             <input type="checkbox" id={id} defaultChecked={value.checked} />{' '}
-            <Text text={value.text} />
+            <Text text={block.to_do.text} />
           </label>
         </div>
       )
@@ -91,7 +91,7 @@ const renderBlock = (block: GetBlockResponse) => {
       return (
         <details>
           <summary>
-            <Text text={value.text} />
+            <Text text={block.toggle.text} />
           </summary>
           {value.children?.map((block) => (
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
