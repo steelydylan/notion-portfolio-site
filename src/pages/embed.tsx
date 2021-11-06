@@ -1,12 +1,15 @@
 import { NextPageContext } from 'next'
 import parser, { OgpParserResult } from 'ogp-parser'
 
-const Embed = ({ embed }: { embed: OgpParserResult }) => {
+const Embed = ({ embed, url }: { embed: OgpParserResult; url: string }) => {
   const ogUrl = embed.ogp['og:url'][0]
   const domain = new URL(ogUrl).hostname
 
   return (
-    <div
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
       className="rounded-sm border border-gray-300 flex m-auto"
       style={{ maxWidth: '780px' }}
     >
@@ -31,7 +34,7 @@ const Embed = ({ embed }: { embed: OgpParserResult }) => {
           className="w-full h-full object-cover"
         />
       </div>
-    </div>
+    </a>
   )
 }
 
@@ -40,6 +43,7 @@ Embed.getInitialProps = async (ctx: NextPageContext) => {
   const embed = await parser(url as string)
   return {
     embed,
+    url,
   }
 }
 
