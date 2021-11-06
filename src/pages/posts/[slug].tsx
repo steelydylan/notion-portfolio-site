@@ -16,7 +16,7 @@ export const Text = ({ text }) => {
         className={[
           bold ? 'font-bold' : '',
           code
-            ? 'bg-red-300 text-red-500 text-sm inline-block py px rounded-sm'
+            ? 'text-white bg-indigo-500 text-sm inline-block py px rounded-sm'
             : '',
           italic ? 'italic' : '',
           strikethrough ? 'stroke-1' : '',
