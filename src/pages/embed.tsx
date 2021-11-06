@@ -3,7 +3,7 @@ import parser, { OgpParserResult } from 'ogp-parser'
 
 const Embed = ({ embed, url }: { embed: OgpParserResult; url: string }) => {
   const ogUrl = embed.ogp['og:url']?.[0] ?? ''
-  const domain = new URL(ogUrl).hostname
+  const domain = ogUrl ? new URL(ogUrl).hostname : ''
 
   return (
     <a
