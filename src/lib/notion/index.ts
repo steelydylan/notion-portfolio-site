@@ -1,19 +1,18 @@
 import { Client } from '@notionhq/client'
+import { QueryDatabaseParameters } from '@notionhq/client/build/src/api-endpoints'
 import { Post } from '../../types'
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 })
 
-export const getDatabase = async (databaseId: string) => {
+export const getDatabase = async (
+  databaseId: string,
+  args: Omit<QueryDatabaseParameters, 'database_id'> = {}
+) => {
   const response = await notion.databases.query({
     database_id: databaseId,
-    sorts: [
-      {
-        property: 'rEYP',
-        direction: 'descending',
-      },
-    ],
+    ...args,
   })
   const { results } = response
   const posts = results.map((result) => {
@@ -45,7 +44,7 @@ export const getDatabase = async (databaseId: string) => {
       } else if (property.type === 'checkbox') {
         item[key.toLowerCase()] = property.checkbox
       } else if (property.type === 'multi_select') {
-        item[key.toLowerCase()] = property.multi_select[0].name
+        item[key.toLowerCase()] = property.multi_select?.[0]?.name
       } else if (property.type === 'date') {
         item[key.toLowerCase()] = property.date.start
       }

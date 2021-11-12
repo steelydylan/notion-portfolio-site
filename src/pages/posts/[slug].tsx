@@ -129,6 +129,8 @@ const renderBlock = (block: GetBlockResponse) => {
           }}
         />
       )
+    case 'child_database':
+      return <div>{block.child_database.title}</div>
     case 'callout':
       return (
         <div className="flex flex-wrap sm:flex-no-wrap justify-between bg-gray-100 rounded overflow-hidden p-2 space-x-0 sm:space-x-2 mb-5">
@@ -192,6 +194,17 @@ export const getStaticProps = async (context) => {
         }
       })
   )
+  const childDatabasedBlocks = await Promise.all(
+    blocks
+      .filter((block) => block.type === 'child_database')
+      .map(async (block) => {
+        return {
+          id: block.id,
+          // children: await getDatabase(block.id)
+        }
+      })
+  )
+
   const blocksWithChildren = blocks.map((block) => {
     if (block.has_children && !block[block.type].children) {
       block[block.type]['children'] = childBlocks.find(
@@ -201,10 +214,19 @@ export const getStaticProps = async (context) => {
     return block
   })
 
+  const blocksWithChildDatabase = blocksWithChildren.map((block) => {
+    if (block.type === 'child_database') {
+      // block[block.type]['children'] = childDatabasedBlocks.find(
+      //   (x) => x.id === block.id
+      // )?.children
+    }
+    return block
+  })
+
   return {
     props: {
       page,
-      blocks: blocksWithChildren,
+      blocks: blocksWithChildDatabase,
     },
     revalidate: 1,
   }
