@@ -123,6 +123,8 @@ const renderBlock = (block: GetBlockResponse) => {
       return <iframe src={block.embed.url} className="mb-5 w-full h-50" />
     case 'child_database':
       return <div>{block.child_database.title}</div>
+    case 'divider':
+      return <hr />
     case 'quote':
       return (
         <div className="block w-full mx-auto rounded-lg bg-white shadow-lg px-5 pt-5 pb-10 text-gray-800 mb-5">
