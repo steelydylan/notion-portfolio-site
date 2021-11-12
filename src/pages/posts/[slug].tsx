@@ -40,8 +40,6 @@ const renderBlock = (block: GetBlockResponse) => {
   const { type, id } = block
   const value = block[type]
 
-  console.log(block)
-
   switch (type) {
     case 'paragraph':
       return (
@@ -63,13 +61,13 @@ const renderBlock = (block: GetBlockResponse) => {
       )
     case 'heading_2':
       return (
-        <h2 className="text-gray-800 text-xl sm:text-2xl font-semibold mb-2 md:mb-4">
+        <h2 className="text-gray-800 text-lg sm:text-xl font-semibold mb-2 md:mb-4">
           <Text text={block.heading_2.text} />
         </h2>
       )
     case 'heading_3':
       return (
-        <h3>
+        <h3 className="text-gray-800 text-md sm:text-lg font-semibold mb-2 md:mb-4">
           <Text text={block.heading_3.text} />
         </h3>
       )
@@ -150,6 +148,14 @@ const renderBlock = (block: GetBlockResponse) => {
           </div>
         </div>
       )
+    case 'column_list':
+      return (
+        <div className="flex">
+          {(block.column_list.children as any).map((c) => renderBlock(c))}
+        </div>
+      )
+    case 'column':
+      return <div className="flex-1">カラム</div>
     default:
       return `❌ Unsupported block (${
         type === 'unsupported' ? 'unsupported by Notion API' : type
