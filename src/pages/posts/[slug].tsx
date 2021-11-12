@@ -119,6 +119,16 @@ const renderBlock = (block: GetBlockResponse) => {
           className="w-full block border-0 h-36"
         />
       )
+    case 'embed':
+      return (
+        <iframe
+          src={block.embed.url}
+          style={{
+            width: '100%',
+            height: '200px',
+          }}
+        />
+      )
     default:
       return `❌ Unsupported block (${
         type === 'unsupported' ? 'unsupported by Notion API' : type
