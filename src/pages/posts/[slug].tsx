@@ -120,17 +120,23 @@ const renderBlock = (block: GetBlockResponse) => {
         />
       )
     case 'embed':
-      return (
-        <iframe
-          src={block.embed.url}
-          style={{
-            width: '100%',
-            height: '200px',
-          }}
-        />
-      )
+      return <iframe src={block.embed.url} className="mb-5 w-full h-50" />
     case 'child_database':
       return <div>{block.child_database.title}</div>
+    case 'quote':
+      return (
+        <div className="block w-full mx-auto rounded-lg bg-white shadow-lg px-5 pt-5 pb-10 text-gray-800 mb-5">
+          <div className="text-3xl text-indigo-500 text-left leading-tight h-3">
+            “
+          </div>
+          <div className="text-sm text-gray-600 text-center px-5">
+            <Text text={block.quote.text} />
+          </div>
+          <div className="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">
+            ”
+          </div>
+        </div>
+      )
     case 'callout':
       return (
         <div className="flex flex-wrap sm:flex-no-wrap justify-between bg-gray-100 rounded overflow-hidden p-2 space-x-0 sm:space-x-2 mb-5">
