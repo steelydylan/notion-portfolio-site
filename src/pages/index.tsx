@@ -19,11 +19,7 @@ export async function getStaticProps() {
 }
 
 const Index = ({ posts = [], preview }) => {
-  return (
-    <>
-      <Portfolio posts={posts} />
-    </>
-  )
+  return <Portfolio posts={posts} />
 }
 
 export default Index
