@@ -12,7 +12,7 @@ export const Text = ({ text }) => {
         className={[
           bold ? 'font-bold' : '',
           code
-            ? 'text-white bg-indigo-300 text-md inline-block py px-1 rounded-sm'
+            ? 'text-white bg-indigo-300 text-sm inline-block py px-1 rounded-sm mx-1 my-1'
             : '',
           italic ? 'italic' : '',
           strikethrough ? 'stroke-1' : '',
