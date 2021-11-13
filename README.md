@@ -6,8 +6,6 @@
 
 まずは Notion にてデータベースを作りましょう。`/table`と入力するとテーブルブロックが作成できますが、これがデータベースに当たります。
 
-![https://storage.googleapis.com/zenn-user-upload/1d17e677242a34855af6511a.png](https://storage.googleapis.com/zenn-user-upload/1d17e677242a34855af6511a.png)
-
 テーブルに以下のようなプロパティを用意
 
 - Page ポートフォリオのタイトル
@@ -26,13 +24,9 @@
 
 Notion のページより Settings & Members → Integrations → Develop your own integrations の順に移動していただき、新しい Integration を作成することで Secret Key を取得できます。
 
-![https://storage.googleapis.com/zenn-user-upload/fd0ba533d9215a4e0d5dbc49.png](https://storage.googleapis.com/zenn-user-upload/fd0ba533d9215a4e0d5dbc49.png)
-
 次に先ほど作成したテーブルに対して作成した integration を招待します。
 
 Notion のの右上にある Share ボタンをクリックし表示されるポップオーバーにて、Invite より作成した integration を招待してください
-
-![https://storage.googleapis.com/zenn-user-upload/8567652289851a45b4315780.png](https://storage.googleapis.com/zenn-user-upload/8567652289851a45b4315780.png)
 
 次にデータベース ID を取得します。
 
