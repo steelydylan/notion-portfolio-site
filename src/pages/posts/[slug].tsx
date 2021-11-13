@@ -103,11 +103,11 @@ const renderBlock = (block: GetBlockResponse) => {
       )
     case 'callout':
       return (
-        <div className="flex flex-wrap sm:flex-no-wrap justify-between bg-gray-100 rounded overflow-hidden p-2 space-x-0 sm:space-x-2 mb-5">
+        <div className="flex flex-wrap sm:flex-no-wrap justify-between items-center bg-gray-100 rounded overflow-hidden p-2 space-x-0 sm:space-x-2 mb-5">
           {block.callout.icon.type === 'emoji' && (
             <span>{block.callout.icon.emoji}</span>
           )}
-          <div className="flex flex-col flex-grow text-center sm:text-left">
+          <div className="flex flex-col flex-grow text-center sm:text-left text-sm">
             <Text text={block.callout.text} />
           </div>
         </div>
