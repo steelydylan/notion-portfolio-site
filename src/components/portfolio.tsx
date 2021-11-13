@@ -12,7 +12,7 @@ const PortfolioItem: React.FC<{
   return (
     <div className="flex flex-col md:flex-row items-center gap-4 lg:gap-6">
       <Link href={url} passHref>
-        <a className="group w-full md:w-24 lg:w-40 h-56 md:h-24 lg:h-40 block self-start flex-shrink-0 bg-gray-100 overflow-hidden rounded-lg shadow-lg relative">
+        <a className="group w-full md:w-24 lg:w-40 h-32 md:h-24 lg:h-40 block self-start flex-shrink-0 bg-gray-100 overflow-hidden rounded-lg shadow-lg relative">
           <img
             src={image}
             loading="lazy"
