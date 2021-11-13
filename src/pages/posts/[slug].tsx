@@ -107,7 +107,7 @@ const renderBlock = (block: GetBlockResponse) => {
           {block.callout.icon.type === 'emoji' && (
             <span>{block.callout.icon.emoji}</span>
           )}
-          <div className="flex flex-col flex-grow text-center sm:text-left text-sm">
+          <div className="flex flex-col flex-grow text-left text-sm">
             <Text text={block.callout.text} />
           </div>
         </div>
