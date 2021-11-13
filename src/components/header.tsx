@@ -8,8 +8,8 @@ export const Header = () => {
           <div className="flex items-center justify-between">
             <div>
               <Link href="/" passHref>
-                <a className="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300">
-                  Steelydylan
+                <a className="text-lg font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">
+                  Steelydylan Portfolio
                 </a>
               </Link>
             </div>
@@ -33,7 +33,7 @@ export const Header = () => {
           <div className="flex flex-col text-gray-600 capitalize dark:text-gray-300 lg:flex lg:px-16 lg:-mx-4 lg:flex-row lg:items-center">
             <Link href="/" passHref>
               <a className="mt-2 lg:mt-0 lg:mx-4 hover:text-gray-800 dark:hover:text-gray-200">
-                works
+                Portfolio
               </a>
             </Link>
             {/* <a href="https://blog-friends.com/users/steelydylan" target="_blank" rel="noopener noreferrer" className="mt-2 lg:mt-0 lg:mx-4 hover:text-gray-800 dark:hover:text-gray-200">blog</a> */}

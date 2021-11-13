@@ -1,40 +1,8 @@
 import { GetBlockResponse } from '@notionhq/client/build/src/api-endpoints'
 import { Fragment } from 'react'
 import { getBlocks, getDatabase, getPage } from '../../lib/notion'
-
-export const Text = ({ text }) => {
-  if (!text) {
-    return null
-  }
-  return text.map((value) => {
-    const {
-      annotations: { bold, code, color, italic, strikethrough, underline },
-      text,
-    } = value
-    return (
-      <span
-        className={[
-          bold ? 'font-bold' : '',
-          code
-            ? 'text-white bg-indigo-300 text-sm inline-block py px-1 rounded-sm'
-            : '',
-          italic ? 'italic' : '',
-          strikethrough ? 'stroke-1' : '',
-          underline ? 'underline' : '',
-        ].join(' ')}
-        style={color !== 'default' ? { color } : {}}
-      >
-        {text.link ? (
-          <a href={text.link.url} className="text-indigo-500 hover:underline">
-            {text.content}
-          </a>
-        ) : (
-          text.content
-        )}
-      </span>
-    )
-  })
-}
+import { Text } from '../../components/text'
+import { CodeBlock } from '../../components/code-block'
 
 const renderBlock = (block: GetBlockResponse) => {
   const { type, id } = block
@@ -48,11 +16,7 @@ const renderBlock = (block: GetBlockResponse) => {
         </p>
       )
     case 'code':
-      return (
-        <pre className="mb-6 md:mb-8 text-xs text-white bg-black p-2 overflow-x-auto">
-          <Text text={block.code.text} />
-        </pre>
-      )
+      return <CodeBlock text={block.code.text} lang={block.code.language} />
     case 'heading_1':
       return (
         <h1 className="text-gray-800 text-xl sm:text-2xl font-semibold mb-2 md:mb-4">
