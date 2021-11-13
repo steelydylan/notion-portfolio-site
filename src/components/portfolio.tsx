@@ -64,7 +64,7 @@ export const Portfolio: React.FC<{ posts: Post[] }> = ({ posts }) => {
             Please see my works from the links if you like
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 sm:gap-12 xl:gap-16">
+        <div className="grid grid-cols-2 gap-8 sm:gap-12 xl:gap-16">
           {posts.map((p) => (
             <PortfolioItem
               title={p.page}
