@@ -11,7 +11,7 @@ const renderBlock = (block: GetBlockResponse) => {
   switch (type) {
     case 'paragraph':
       return (
-        <p className="text-gray-500 text-sm mb-6 md:mb-8">
+        <p className="text-gray-500 text-md mb-6 md:mb-8">
           <Text text={block.paragraph.text} />
         </p>
       )

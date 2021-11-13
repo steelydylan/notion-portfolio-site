@@ -20,7 +20,7 @@ export const CodeBlock: React.FC<{ text: any; lang: string }> = ({
   }, [])
 
   return (
-    <pre className="mb-6 md:mb-8 text-xs text-white bg-black p-2 overflow-x-auto">
+    <pre className="mb-6 md:mb-8 text-sm text-white bg-black p-4 overflow-x-auto rounded-md bg-opacity-80">
       <code className={lang}>
         <Text text={text} />
       </code>
